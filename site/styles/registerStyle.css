@@ -1,0 +1,24 @@
+.field 
+{
+    clear: both; 
+    text-align: right;
+    padding: 10px;
+}
+
+label 
+{
+    float:left;
+    padding-right: 20px;
+}
+
+form
+{
+    margin-top: 40px;
+    margin-left: 100px;
+    float:left;
+}
+
+#okButton
+{
+    margin-top: 20px;
+}

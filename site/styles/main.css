@@ -1,0 +1,88 @@
+body
+{
+    font-family: fantasy;
+    font-size: 20px;
+}
+
+header
+{
+    background-color: #151515;
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    padding: 40px 0px 40px 0px;
+    width: 100%;
+    border: 2px outset black;
+    color: #afb444;
+}
+
+nav
+{
+    padding: 10px 0px 10px 0px;
+    text-transform: uppercase;
+    background-color: #151515;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    margin: 5px 0ox 5px 0px;
+    border: 2px outset black;
+}
+
+article
+{
+    color: #afb444;
+    background: url(../images/mainImage.jpg) no-repeat;
+    background-size: cover; 
+    height: 800px;
+    border: 2px outset black;
+    width: 100%;
+}
+
+footer
+{
+    background-color: #151515;
+    text-align: justify;
+    width: 100%;
+    bottom: 0;
+    border: 2px outset black;
+    color: #bcae3f;
+    height: 180px;
+}
+
+
+a:hover
+{
+    color: black;
+}
+
+a
+{
+    text-align: center;
+    padding: 30px;
+    text-decoration: none;
+    color: #bcae3f;
+}
+
+#logo
+{
+    margin-right: 20px;
+    border: 1px double #88883a;
+    border-radius: 20%;
+}
+
+blockquote
+{
+    float: left;
+    width: 50%;
+}
+
+#sponsors
+{
+    text-align: right;
+}
+#sponsors img
+{
+    margin: 20px 20px 0px 20px;
+    border: 1px double #88883a;
+    border-radius: 20%;
+}

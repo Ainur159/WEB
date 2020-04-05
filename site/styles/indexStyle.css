@@ -1,0 +1,28 @@
+#raceText
+{
+    position: static;
+    float:left;
+    width: 30%;
+    padding: 30px;
+    height: 400px;
+}
+
+#raceWay
+{
+    width: 60%;
+    float:right;
+    text-align: center;
+}
+
+#timer
+{
+    padding: 30px;
+    margin-top: 500px;
+    margin-right: 70%;
+}
+
+#raceWay img
+{
+    border: 1px double #88883a;
+    border-radius: 20%;
+}q
