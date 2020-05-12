@@ -1,3 +1,7 @@
+<?php 
+	session_start(); 
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,9 +9,9 @@
         <title>Автогонки</title>
         <link rel="stylesheet" type="text/css" href="styles/main.css"/>
         <link rel="stylesheet" type="text/css" href="styles/indexStyle.css"/>
-        <link rel="icon" href="icon.png"/>
+        <link rel="icon" href="images/icon.png"/>
         
-        <script type="text/javascript" src="timer.js"></script>
+        <script type="text/javascript" src="js/timer.js"></script>
     </head>
     
     <body>
@@ -15,16 +19,22 @@
             <img id=logo src="images/logo.jpg" width="100" height="70" alt="Логотип">Организация автогонок
         </header>
         <nav>
-            <a href="index.html">Главная</a>
-            <a href="register.html">Регистрация</a>
-            <a href="racers.html">Список участников</a>
-            <a href="contacts.html">Контакты</a>
+            <a href="index.php">Главная</a>
+            <a href="register.php">Регистрация</a>
+            <a href="racersFind.php">Список участников</a>
+            <a href="#">Контакты</a>
+			<?php 
+				if(!$_SESSION['user'])
+					echo "<a href=\"signIn.php\">Вход</a>";
+				else
+					echo "<a href=\"signOut.php\">Выход</a>";
+			?>
         </nav>
         <article>
             <div id=raceText>
                 <h1>Turbo Racing Cup</h1>
                 <p>Turbo Racing Cup 2020 – представляет собой открытое для любого желающего автогоночное соревнование по дисциплине тайм-аттак, начального уровня. Уже не первый раз TRC подкупает участников своим демократичным и доступным каждому подходом к соревнованиям. В каждом новом году, к этим заездам примыкают десятки дебютантов, чем может похвастаться далеко не каждая автогоночная дисциплина России. Не в каждом соревновании гонщик-любитель получает возможность выступить на стоковом тазу…</p>
-                <p>Не пропустите, только 28 апреля 2020 на всеми любимой трассе <b>"Helios"</b></p>
+                <p>Не пропустите, только 5 июня 2020 на всеми любимой трассе <b>"Helios"</b></p>
             </div>
             
             <div id=raceWay> Трасса гонки <b>"Helios"</b><br> 

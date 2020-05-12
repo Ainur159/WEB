@@ -1,19 +1,50 @@
+<?php
+	ini_set('display_errors', 0);
+	ini_set('display_startup_errors', 0);
+	error_reporting(0);
+
+	require "include/.properties";
+	
+	if($_POST['submit'])
+	{
+		if($_POST['user'] AND $_POST['pass']) 
+		{
+			$mysqli = new mysqli($host, $_POST['user'], $_POST['pass'], $db);
+			if ($mysqli->connect_error) 
+			{
+				echo "<script>alert(\"Не верный логин и пароль!\");</script>";
+			}
+			else
+			{
+				session_start();
+				$_SESSION['user'] = $_POST['user'];
+				$_SESSION['pass'] = $_POST['pass'];
+				header("Location: http://second/index.php", false, 301);
+				$mysqli->close();
+				exit();
+			}
+		}
+		else
+		{
+			echo "<script>alert(\"Введите логин и пароль!\");</script>";
+		}
+	}
+?>
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8"/>
         <title>Автогонки</title>
         <link rel="stylesheet" type="text/css" href="styles/main.css"/>
-        <link rel="stylesheet" type="text/css" href="styles/indexStyle.css"/>
-        <link rel="icon" href="icon.png"/>
-    
-		<style>
-			form, table, span 
-			{
-				margin-left: 5%;
-			}
-		</style>
-	</head>
+        <link rel="stylesheet" type="text/css" href="styles/registerStyle.css"/>
+        <link rel="icon" href="images/icon.png"/>
+        
+        <script src="js/clientValidation.js"></script>
+        
+    </head>
     <body>
         <header>
             <img id=logo src="images/logo.jpg" width="100" height="70" alt="Логотип">Организация автогонок
@@ -25,16 +56,13 @@
             <a href="contacts.html">Контакты</a>
         </nav>
         <article>
-            
-			<form name="find" method="post" action="">
-				<p>
-					<label>Введите имя участника: </label><input type="text" name="name" />
-					<input type="submit" value="поиск"/>
-				</p>
+		
+            <form method="post">
+				<p> <pre>Логин:     <input type="text" name="user" /> </pre> </p>
+				<p> <pre>Пароль:    <input type="password" name="pass" /> </pre> </p>
+				<p> <input type="submit" name="submit" value="Войти" /> </p>
 			</form>
 			
-			<?php include "racers.php"; ?>
-            
         </article>
         <footer>
             <blockquote>

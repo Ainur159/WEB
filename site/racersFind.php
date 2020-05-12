@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-?>
+?>	
 
 <!DOCTYPE html>
 <html>
@@ -32,74 +32,17 @@
 					echo "<a href=\"signIn.php\">Вход</a>";
 				else
 					echo "<a href=\"signOut.php\">Выход</a>";
+				
 			?>
         </nav>
         <article>
             
-			<?php 
-				require "include/.properties";
-				
-	
-				if(!$_SESSION['user'])
-				{
-					echo 'Авторизуйтесь перед поиском';
-					exit;
-				}
-				
-				$mysqli = new mysqli($host, $_SESSION['user'], $_SESSION['pass'], $db);
-				
-				if (!$mysqli) 
-				{ 
-				   header("HTTP/1.0 501 NotImplemented"); 
-				   exit; 
-				} 
-				
-				if(!isset($_POST['name']))
-					$sql = "SELECT fName,sName,tName,phone,mark,model,year from driver";
-				else 
-				{
-					$sql = "SELECT fName,sName,tName,phone,mark,model,year from driver where INSTR(CONCAT_WS(' ', fName, sName, tName),?) <> 0";
-					$name = htmlentities($_POST['name']);
-				}
-				
-				$stmt = $mysqli->prepare("SELECT fName,sName,tName,phone,mark,model,year from driver where INSTR(CONCAT_WS(' ', fName, sName, tName),?) <> 0");
-				if(!$stmt)
-				{
-					header("HTTP/1.0 501 NotImplemented"); 
-					exit;
-				}
-				$stmt->bind_param("s", $name);
-				$stmt->execute();
-				$stmt->store_result();
-				
-				if($stmt->num_rows == 0) 
-					echo('Таковых нет!');
-				else
-				{
-					echo "<span>Число участников: " . $stmt->num_rows . "</span>";
-					echo '<table border="1">
-							<tr>
-								<th>Фамилия</th><th>Имя</th><th>Отчество</th><th>Телефон</th><th>Марка</th><th>Модель</th><th>Год</th>
-							</tr>';
-					
-					$stmt->bind_result($fName, $sName, $tName, $phone, $mark, $model, $year);
-					while($stmt->fetch()) 
-					{
-						echo '<tr>';
-						echo '<td>'.$fName.'</td>';
-						echo '<td>'.$sName.'</td>';
-						echo '<td>'.$tName.'</td>';
-						echo '<td>'.$phone.'</td>';
-						echo '<td>'.$mark.'</td>';
-						echo '<td>'.$model.'</td>';
-						echo '<td>'.$year.'</td>';
-						echo '</tr>';
-					}
-					echo '</table>';
-					$stmt->close();
-				}
-				$mysqli->close();
-			?>
+			<form name="find" method="post" action="racers.php">
+				<p>
+					<label>Введите имя участника: </label><input type="text" name="name" />
+					<input type="submit" value="поиск"/>
+				</p>
+			</form>
             
         </article>
         <footer>
